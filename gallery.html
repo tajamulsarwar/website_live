@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photo gallery of Skardu, Hunza, Deosai & Northern Pakistan. Western GB Travel & Tours.">
+  <title>Gallery | Western GB Travel & Tours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      animation: scaleIn3d 0.4s ease;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 30px; right: 30px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10001;
+      width: 50px; height: 50px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    /* 3D Rotating Carousel */
+    .gallery-3d-wrapper {
+      margin-bottom: 80px;
+      padding: 60px 0;
+    }
+
+    .gallery-3d-scene {
+      width: 280px;
+      height: 200px;
+      margin: 0 auto;
+      perspective: 1400px;
+      perspective-origin: center center;
+    }
+
+    .gallery-3d-carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      animation: gallery3dRotate 24s linear infinite;
+    }
+
+    .gallery-3d-carousel:hover {
+      animation-play-state: paused;
+    }
+
+    .gallery-3d-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+      reflect: none;
+    }
+
+    .gallery-3d-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-3d-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-3d-card:hover {
+      box-shadow: 0 15px 50px rgba(240,192,64,0.4);
+    }
+
+    @keyframes gallery3dRotate {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(-360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-3d-scene {
+        width: 200px;
+        height: 150px;
+      }
+      .gallery-3d-card {
+        width: 200px;
+        height: 150px;
+        transform: rotateY(calc(var(--i) * 45deg)) translateZ(280px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-3d-scene {
+        width: 160px;
+        height: 120px;
+      }
+      .gallery-3d-card {
+        width: 160px;
+        height: 120px;
+        transform: rotateY(calc(var(--i) * 45deg)) translateZ(200px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="logo.jpeg" alt="Western GB Logo"></div>
+        <div class="nav-logo-text">Western GB<span>Travel &amp; Tours</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="rent-a-car.html">Rent a Car</a>
+        <a href="air-tickets.html">Air Tickets</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="contact.html" class="nav-cta">Book Now</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1 class="text-3d">Photo Gallery</h1>
+      <p>Witness the beauty of Northern Pakistan</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Gallery</span></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">Visual Journey</div>
+        <h2 class="section-title reveal delay-1">Captured <span>Moments</span></h2>
+        <p class="section-subtitle reveal delay-2">Every picture tells a story of adventure</p>
+      </div>
+
+      <!-- 3D Rotating Gallery Carousel -->
+      <div class="gallery-3d-wrapper reveal">
+        <div class="gallery-3d-scene">
+          <div class="gallery-3d-carousel">
+            <div class="gallery-3d-card" style="--i:0"><img src="images/j3.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:1"><img src="images/j4.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:2"><img src="images/j5.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:3"><img src="images/j6.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:4"><img src="images/j7.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:5"><img src="images/j8.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:6"><img src="images/j9.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:7"><img src="images/j10.jpeg" alt="Gilgit-Baltistan"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item tall reveal delay-1" onclick="openLightbox(this)">
+          <img src="images/j3.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-2" onclick="openLightbox(this)">
+          <img src="images/j4.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-3" onclick="openLightbox(this)">
+          <img src="images/j5.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-4" onclick="openLightbox(this)">
+          <img src="images/j6.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-1" onclick="openLightbox(this)">
+          <img src="images/j7.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item wide reveal delay-2" onclick="openLightbox(this)">
+          <img src="images/j8.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-3" onclick="openLightbox(this)">
+          <img src="images/j9.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item tall reveal delay-4" onclick="openLightbox(this)">
+          <img src="images/j10.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-1" onclick="openLightbox(this)">
+          <img src="images/j11.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-2" onclick="openLightbox(this)">
+          <img src="images/j12.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item wide reveal delay-3" onclick="openLightbox(this)">
+          <img src="images/j13.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item reveal delay-4" onclick="openLightbox(this)">
+          <img src="images/p2.jpeg" alt="Gilgit-Baltistan Scenery" loading="lazy">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+      </div>
+
+      <div class="text-center mt-40 reveal">
+        <p style="color: var(--text-light); margin-bottom: 20px;">Follow us on Instagram for more stunning photos!</p>
+        <a href="https://www.instagram.com/western_gb_travel" target="_blank" class="btn btn-dark ripple">
+          <i class="fab fa-instagram"></i> Follow @western_gb_travel
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-content container">
+      <h2 class="text-3d reveal">Ready to Create <span style="color: var(--secondary);">Your Memories?</span></h2>
+      <p class="reveal delay-1">Book your trip and capture your own breathtaking moments.</p>
+      <div class="cta-buttons reveal delay-2">
+        <a href="packages.html" class="btn btn-primary ripple"><i class="fas fa-compass"></i> View Packages</a>
+        <a href="contact.html" class="btn btn-outline ripple"><i class="fas fa-paper-plane"></i> Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-close"><i class="fas fa-times"></i></div>
+    <img src="" alt="Gallery Image" id="lightbox-img">
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><h3><img src="logo.jpeg" alt="Western GB Logo" style="width:30px;height:30px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;">Western GB Travel & Tours</h3><p>Your trusted travel partner for exploring the breathtaking Northern Areas of Pakistan.</p><div class="footer-social"><a href="https://www.instagram.com/western_gb_travel" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/923409333238" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="mailto:westerngbt@gmail.com"><i class="fas fa-envelope"></i></a></div></div>
+        <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="packages.html">Tour Packages</a></li><li><a href="hotels.html">Hotels</a></li><li><a href="rent-a-car.html">Rent a Car</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+        <div class="footer-links"><h4>Destinations</h4><ul><li><a href="packages.html">Skardu</a></li><li><a href="packages.html">Hunza</a></li><li><a href="packages.html">Deosai</a></li><li><a href="packages.html">Khaplu Valley</a></li><li><a href="packages.html">Shigar</a></li><li><a href="packages.html">Kharmang</a></li></ul></div>
+        <div class="footer-contact"><h4>Contact Us</h4><div class="footer-contact-item"><i class="fas fa-phone"></i><p><a href="tel:+923195706670">+92 319-5706670</a><br><a href="tel:+923555804423">+92 355-5804423</a></p></div><div class="footer-contact-item"><i class="fab fa-whatsapp"></i><p><a href="https://wa.me/923409333238">+92 340-9333238</a></p></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><p><a href="mailto:westerngbt@gmail.com">westerngbt@gmail.com</a></p></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Western GB Travel & Tours.</p><p>Gilgit-Baltistan, Pakistan 🇵🇰</p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923409333238" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+  <a href="#" class="scroll-top"><i class="fas fa-chevron-up"></i></a>
+
+  <script src="js/main.js"></script>
+  <script>
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.src.replace(/w=\d+/, 'w=1200').replace(/h=\d+/, 'h=900');
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

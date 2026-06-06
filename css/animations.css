@@ -1,0 +1,417 @@
+/* ============================================
+   WESTERN GB TRAVEL & TOURS - 3D Animations
+   ============================================ */
+
+/* ---------- 3D Keyframes ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotateX(0); }
+  50% { transform: translateY(-15px) rotateX(5deg); }
+}
+
+@keyframes float3d {
+  0%, 100% { transform: translateY(0) rotateY(0) rotateX(0); }
+  25% { transform: translateY(-10px) rotateY(5deg) rotateX(3deg); }
+  50% { transform: translateY(-20px) rotateY(0) rotateX(-3deg); }
+  75% { transform: translateY(-10px) rotateY(-5deg) rotateX(3deg); }
+}
+
+@keyframes pulse3d {
+  0%, 100% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(1.05) translateZ(20px); }
+}
+
+@keyframes rotateIn3d {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateY(-30deg) translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) rotateY(0) translateX(0);
+  }
+}
+
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0);
+  }
+}
+
+@keyframes slideUp3d {
+  from {
+    opacity: 0;
+    transform: perspective(800px) translateY(80px) rotateX(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) translateY(0) rotateX(0);
+  }
+}
+
+@keyframes scaleIn3d {
+  from {
+    opacity: 0;
+    transform: perspective(600px) scale(0.5) rotateY(20deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(600px) scale(1) rotateY(0);
+  }
+}
+
+@keyframes mountainFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(calc(100vw + 100%)); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(240,192,64,0.3); }
+  50% { box-shadow: 0 0 40px rgba(240,192,64,0.6); }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes planefly {
+  0% {
+    transform: translate(-100%, 100%) rotate(-15deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translate(100vw, -100vh) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Scroll Reveal Classes ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-3d {
+  opacity: 0;
+  transform: perspective(800px) rotateY(-15deg) translateX(-30px);
+  transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-3d.active {
+  opacity: 1;
+  transform: perspective(800px) rotateY(0) translateX(0);
+}
+
+.reveal-flip {
+  opacity: 0;
+  transform: perspective(600px) rotateX(60deg);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-flip.active {
+  opacity: 1;
+  transform: perspective(600px) rotateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ---------- 3D Card Tilt Effect ---------- */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.tilt-card .tilt-inner {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover .tilt-inner {
+  transform: rotateX(5deg) rotateY(5deg);
+}
+
+.tilt-card .tilt-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.tilt-card:hover .tilt-shine {
+  opacity: 1;
+}
+
+/* ---------- Parallax Layers ---------- */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  transition: transform 0.1s ease-out;
+}
+
+.parallax-mountains-back {
+  bottom: 0;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.parallax-mountains-mid {
+  bottom: -10%;
+  z-index: 2;
+  opacity: 0.5;
+}
+
+.parallax-mountains-front {
+  bottom: -20%;
+  z-index: 3;
+  opacity: 0.7;
+}
+
+/* ---------- 3D Text Effect ---------- */
+.text-3d {
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.1),
+    2px 2px 0 rgba(0,0,0,0.08),
+    3px 3px 0 rgba(0,0,0,0.06),
+    4px 4px 0 rgba(0,0,0,0.04),
+    5px 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ---------- Floating Elements ---------- */
+.float-element {
+  animation: float3d 6s ease-in-out infinite;
+}
+
+.float-element:nth-child(2) { animation-delay: -1s; }
+.float-element:nth-child(3) { animation-delay: -2s; }
+.float-element:nth-child(4) { animation-delay: -3s; }
+
+/* ---------- Morphing Background ---------- */
+.morph-bg {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 42% 56% 72% 28% / 42% 42% 56% 48%;
+  background: linear-gradient(135deg, rgba(240,192,64,0.15), rgba(46,134,222,0.15));
+  animation: morph 8s ease-in-out infinite;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 42% 56% 72% 28% / 42% 42% 56% 48%; }
+  25% { border-radius: 72% 28% 42% 56% / 56% 48% 42% 42%; }
+  50% { border-radius: 28% 72% 56% 42% / 48% 56% 42% 42%; }
+  75% { border-radius: 56% 42% 28% 72% / 42% 42% 48% 56%; }
+}
+
+/* ---------- Particle Styles ---------- */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(240,192,64,0.6);
+  border-radius: 50%;
+  animation: starTwinkle 3s ease-in-out infinite;
+}
+
+/* ---------- Hover 3D Transform for Cards ---------- */
+.hover-3d {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-3d:hover {
+  transform: perspective(800px) rotateX(3deg) rotateY(-3deg) translateZ(10px);
+  box-shadow: 
+    10px 10px 30px rgba(0,0,0,0.12),
+    -5px -5px 20px rgba(0,0,0,0.05);
+}
+
+/* ---------- Loading Skeleton ---------- */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius);
+}
+
+/* ---------- Number Counter Animation ---------- */
+.counter-number {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Image Zoom on Scroll ---------- */
+.zoom-on-scroll {
+  transition: transform 0.5s ease;
+}
+
+.zoom-on-scroll.zoomed {
+  transform: scale(1.05);
+}
+
+/* ---------- Plane Animation ---------- */
+.flying-plane {
+  position: absolute;
+  font-size: 2rem;
+  animation: planefly 15s linear infinite;
+  z-index: 2;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ---------- Gradient Border Animation ---------- */
+.gradient-border {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--accent), var(--secondary), var(--accent), var(--secondary));
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradientRotate 4s ease infinite;
+}
+
+@keyframes gradientRotate {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ---------- Ripple Effect ---------- */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ---------- Mountain SVG Waves ---------- */
+.mountain-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.mountain-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+}
+
+.mountain-divider .shape-fill {
+  fill: var(--white);
+}

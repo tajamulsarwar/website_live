@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Western GB Travel & Tours. Book tours, hotels, car rentals. Phone, WhatsApp, Email.">
+  <title>Contact & Book | Western GB Travel & Tours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="logo.jpeg" alt="Western GB Logo"></div>
+        <div class="nav-logo-text">Western GB<span>Travel &amp; Tours</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="rent-a-car.html">Rent a Car</a>
+        <a href="air-tickets.html">Air Tickets</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="nav-cta active">Book Now</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1 class="text-3d">Contact & Book</h1>
+      <p>We're here to help you plan your perfect trip</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT INFO + FORM -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Left: Contact Info -->
+        <div>
+          <div class="section-badge reveal">Get In Touch</div>
+          <h2 class="section-title reveal delay-1" style="text-align:left;">Let's Start Your <span>Journey</span></h2>
+          <p class="reveal delay-2" style="color: var(--text-light); margin-bottom: 30px;">
+            Whether you want to book a tour, reserve a hotel, rent a car, or need air tickets — we're just a call away. Reach us through any of these channels.
+          </p>
+
+          <div class="contact-info-cards reveal delay-3">
+            <div class="contact-info-card hover-3d">
+              <i class="fas fa-phone"></i>
+              <h4>Call Us</h4>
+              <p><a href="tel:+923195706670">+92 319-5706670</a></p>
+              <p><a href="tel:+923555804423">+92 355-5804423</a></p>
+            </div>
+
+            <div class="contact-info-card hover-3d">
+              <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/923409333238" target="_blank">+92 340-9333238</a></p>
+            </div>
+
+            <div class="contact-info-card hover-3d">
+              <i class="fas fa-envelope"></i>
+              <h4>Email</h4>
+              <p><a href="mailto:westerngbt@gmail.com">westerngbt@gmail.com</a></p>
+            </div>
+
+            <div class="contact-info-card hover-3d">
+              <i class="fab fa-instagram" style="color: #e1306c;"></i>
+              <h4>Instagram</h4>
+              <p><a href="https://www.instagram.com/western_gb_travel" target="_blank">@western_gb_travel</a></p>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="reveal delay-4" style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="https://wa.me/923409333238?text=Hi!%20I%20want%20to%20book%20a%20tour%20package" target="_blank" class="btn btn-whatsapp btn-sm ripple">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+            <a href="tel:+923195706670" class="btn btn-dark btn-sm ripple">
+              <i class="fas fa-phone"></i> Call Now
+            </a>
+          </div>
+
+          <!-- Location / Hours -->
+          <div class="policy-box reveal delay-5" style="margin-top: 30px;">
+            <h3><i class="fas fa-map-marker-alt text-accent"></i> Our Location</h3>
+            <p>Based in Gilgit-Baltistan, Pakistan. We serve clients from all over Pakistan and internationally.</p>
+            <p style="margin-top: 10px;"><strong>Working Hours:</strong> 9:00 AM — 10:00 PM (Daily)</p>
+            <p><strong>WhatsApp:</strong> Available 24/7</p>
+          </div>
+        </div>
+
+        <!-- Right: Booking Form -->
+        <div class="form-container reveal-right">
+          <h3><i class="fas fa-paper-plane text-accent"></i> Booking / Inquiry Form</h3>
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name">Full Name *</label>
+                <input type="text" id="f-name" name="fullName" required placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="f-phone">Phone Number *</label>
+                <input type="tel" id="f-phone" name="phone" required placeholder="+92...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" name="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="f-service">Service Required *</label>
+              <select id="f-service" name="service" required>
+                <option value="">Select service...</option>
+                <option value="Tour Package">Tour Package</option>
+                <option value="Hotel Booking">Hotel Booking</option>
+                <option value="Car Rental">Car Rental</option>
+                <option value="Air Ticket">Air Ticket</option>
+                <option value="Custom Tour">Custom Tour</option>
+                <option value="Other Inquiry">Other Inquiry</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-travelers">Number of Travelers</label>
+                <input type="number" id="f-travelers" name="travelers" min="1" placeholder="e.g. 4">
+              </div>
+              <div class="form-group">
+                <label for="f-date">Travel Date</label>
+                <input type="date" id="f-date" name="travelDate">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-destination">Destination</label>
+              <select id="f-destination" name="destination">
+                <option value="">Select destination...</option>
+                <option>Skardu</option>
+                <option>Hunza Valley</option>
+                <option>Astore Valley</option>
+                <option>Khaplu Valley</option>
+                <option>Shigar</option>
+                <option>Kharmang</option>
+                <option>Deosai</option>
+                <option>Khunjerab Pass</option>
+                <option>Multiple Destinations</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-message">Your Message *</label>
+              <textarea id="f-message" name="message" required placeholder="Tell us about your trip plans, budget, preferences..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary ripple" style="width: 100%; justify-content: center;">
+              <i class="fas fa-paper-plane"></i> Send Inquiry
+            </button>
+            <p class="form-note"><i class="fas fa-clock"></i> We typically respond within 1-2 hours during working hours</p>
+          </form>
+          <div class="form-success">
+            <i class="fas fa-check-circle"></i>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out! Our team will contact you shortly via phone or WhatsApp.</p>
+            <div style="margin-top: 20px;">
+              <a href="index.html" class="btn btn-primary btn-sm ripple"><i class="fas fa-home"></i> Back to Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOUR BOOKING FORM -->
+  <section class="section section-gray" id="tour-booking">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">Book a Trip</div>
+        <h2 class="section-title reveal delay-1">Tour Booking <span>Form</span></h2>
+        <p class="section-subtitle reveal delay-2">Fill in your details for a specific tour package booking</p>
+      </div>
+
+      <div class="form-container reveal" style="max-width: 700px; margin: 0 auto;">
+        <h3><i class="fas fa-compass text-accent"></i> Tour Package Booking</h3>
+        <form id="tour-booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-name">Full Name *</label>
+              <input type="text" id="t-name" name="fullName" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="t-phone">Contact Number *</label>
+              <input type="tel" id="t-phone" name="contactNumber" required placeholder="+92...">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-adults">Number of Adults *</label>
+              <input type="number" id="t-adults" name="adults" min="1" required placeholder="e.g. 2">
+            </div>
+            <div class="form-group">
+              <label for="t-kids">Number of Kids</label>
+              <input type="number" id="t-kids" name="kids" min="0" value="0">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-package">Tour Package *</label>
+              <select id="t-package" name="package" required>
+                <option value="">Select package...</option>
+                <option>Skardu 5 Days (By Air)</option>
+                <option>Skardu 7 Days (Complete)</option>
+                <option>Hunza Valley 5 Days</option>
+                <option>Khaplu Valley 4 Days</option>
+                <option>Astore Valley 3 Days</option>
+                <option>Corporate/Group Package</option>
+                <option>Custom Package</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="t-type">Tour Type *</label>
+              <select id="t-type" name="tourType" required>
+                <option value="">Select type...</option>
+                <option>Solo</option>
+                <option>Couple</option>
+                <option>Family</option>
+                <option>Group</option>
+                <option>Corporate</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-depart">Departure Date *</label>
+              <input type="date" id="t-depart" name="departureDate" required>
+            </div>
+            <div class="form-group">
+              <label for="t-transport">Transport Preference</label>
+              <select id="t-transport" name="transport">
+                <option value="By Air">By Air (Flight)</option>
+                <option value="By Road">By Road (KKH)</option>
+                <option value="Either">Either / Best Option</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="t-notes">Special Requests / Notes</label>
+            <textarea id="t-notes" name="notes" placeholder="Budget preferences, dietary needs, special activities..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary ripple" style="width:100%; justify-content:center;">
+            <i class="fas fa-paper-plane"></i> Submit Booking
+          </button>
+          <p class="form-note"><i class="fas fa-lock"></i> 50% advance required to confirm. We'll send payment details after confirmation.</p>
+        </form>
+        <div class="form-success">
+          <i class="fas fa-check-circle"></i>
+          <h3>Booking Submitted!</h3>
+          <p>Our team will review your request and contact you within a few hours. Thank you!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-content container">
+      <h2 class="text-3d reveal">Prefer to <span style="color: var(--secondary);">Chat?</span></h2>
+      <p class="reveal delay-1">Reach us directly on WhatsApp for instant responses and quick bookings.</p>
+      <div class="cta-buttons reveal delay-2">
+        <a href="https://wa.me/923409333238?text=Assalam-u-Alaikum!%20I%20want%20to%20book%20a%20trip%20with%20Western%20GB%20Travel" target="_blank" class="btn btn-whatsapp ripple">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><h3><img src="logo.jpeg" alt="Western GB Logo" style="width:30px;height:30px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;">Western GB Travel & Tours</h3><p>Your trusted travel partner for exploring the breathtaking Northern Areas of Pakistan.</p><div class="footer-social"><a href="https://www.instagram.com/western_gb_travel" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/923409333238" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="mailto:westerngbt@gmail.com"><i class="fas fa-envelope"></i></a></div></div>
+        <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="packages.html">Tour Packages</a></li><li><a href="hotels.html">Hotels</a></li><li><a href="rent-a-car.html">Rent a Car</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+        <div class="footer-links"><h4>Destinations</h4><ul><li><a href="packages.html">Skardu</a></li><li><a href="packages.html">Hunza</a></li><li><a href="packages.html">Deosai</a></li><li><a href="packages.html">Khaplu Valley</a></li><li><a href="packages.html">Shigar</a></li><li><a href="packages.html">Kharmang</a></li></ul></div>
+        <div class="footer-contact"><h4>Contact Us</h4><div class="footer-contact-item"><i class="fas fa-phone"></i><p><a href="tel:+923195706670">+92 319-5706670</a><br><a href="tel:+923555804423">+92 355-5804423</a></p></div><div class="footer-contact-item"><i class="fab fa-whatsapp"></i><p><a href="https://wa.me/923409333238">+92 340-9333238</a></p></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><p><a href="mailto:westerngbt@gmail.com">westerngbt@gmail.com</a></p></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Western GB Travel & Tours.</p><p>Gilgit-Baltistan, Pakistan 🇵🇰</p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923409333238" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+  <a href="#" class="scroll-top"><i class="fas fa-chevron-up"></i></a>
+  <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

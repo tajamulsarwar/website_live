@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Western GB Travel & Tours - Explore the breathtaking Gilgit-Baltistan. Tour packages, hotel bookings, car rental, and air ticketing services for Skardu, Hunza, and more.">
+  <meta name="keywords" content="Skardu tours, Hunza travel, Gilgit Baltistan, Deosai, Khaplu, tour packages, hotel booking, rent a car, Western GB Travel">
+  <meta name="author" content="Western GB Travel & Tours">
+  <title>Western GB Travel & Tours | Let's Explore the Unseen</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .gallery-3d-wrapper {
+      margin-bottom: 0;
+      padding: 60px 0;
+    }
+    .gallery-3d-scene {
+      width: 280px;
+      height: 200px;
+      margin: 0 auto;
+      perspective: 1400px;
+      perspective-origin: center center;
+    }
+    .gallery-3d-carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      animation: gallery3dRotate 24s linear infinite;
+    }
+    .gallery-3d-carousel:hover {
+      animation-play-state: paused;
+    }
+    .gallery-3d-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+    }
+    .gallery-3d-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-3d-card:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-3d-card:hover {
+      box-shadow: 0 15px 50px rgba(240,192,64,0.4);
+    }
+    @keyframes gallery3dRotate {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(-360deg); }
+    }
+    @media (max-width: 768px) {
+      .gallery-3d-scene { width: 200px; height: 150px; }
+      .gallery-3d-card { width: 200px; height: 150px; transform: rotateY(calc(var(--i) * 45deg)) translateZ(280px); }
+    }
+    @media (max-width: 480px) {
+      .gallery-3d-scene { width: 160px; height: 120px; }
+      .gallery-3d-card { width: 160px; height: 120px; transform: rotateY(calc(var(--i) * 45deg)) translateZ(200px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== PRELOADER ========== -->
+  <div class="preloader">
+    <div class="preloader-logo">Western GB</div>
+    <div class="preloader-spinner"></div>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="logo.jpeg" alt="Western GB Logo"></div>
+        <div class="nav-logo-text">
+          Western GB
+          <span>Travel &amp; Tours</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="rent-a-car.html">Rent a Car</a>
+        <a href="air-tickets.html">Air Tickets</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="nav-cta">Book Now</a>
+      </div>
+
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
+
+    <!-- Floating plane animation -->
+    <div class="flying-plane">✈️</div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">🌟 Welcome to Gilgit-Baltistan</div>
+      <h1 class="hero-title text-3d reveal delay-1">
+        Let's Explore<br>The <span>Unseen</span>
+      </h1>
+      <p class="hero-subtitle reveal delay-2">
+        Discover the breathtaking Gilgit-Baltistan — Skardu, Hunza, Shigar, Kharmang, Khaplu & beyond. Your unforgettable journey starts here.
+      </p>
+      <div class="hero-buttons reveal delay-3">
+        <a href="packages.html" class="btn btn-primary ripple">
+          <i class="fas fa-compass"></i> Explore Packages
+        </a>
+        <a href="https://wa.me/923409333238?text=Hi!%20I'm%20interested%20in%20booking%20a%20tour" target="_blank" class="btn btn-outline ripple">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </div>
+
+      <div class="hero-stats reveal delay-4">
+        <div class="hero-stat">
+          <h3><span data-count="500" data-suffix="+">0</span></h3>
+          <p>Happy Tourists</p>
+        </div>
+        <div class="hero-stat">
+          <h3><span data-count="15" data-suffix="+">0</span></h3>
+          <p>Destinations</p>
+        </div>
+        <div class="hero-stat">
+          <h3><span data-count="10" data-suffix="+">0</span></h3>
+          <p>Partner Hotels</p>
+        </div>
+        <div class="hero-stat">
+          <h3><span data-count="20" data-suffix="+">0</span></h3>
+          <p>Vehicles</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mountain wave divider -->
+    <div class="mountain-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES SECTION ========== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">What We Offer</div>
+        <h2 class="section-title reveal delay-1">Our <span>Services</span></h2>
+        <p class="section-subtitle reveal delay-2">Complete travel solutions for your Northern Pakistan adventure</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card hover-3d reveal delay-1">
+          <div class="service-icon">🗺️</div>
+          <h3>Tour Packages</h3>
+          <p>Customized 5-7 day trips to Skardu, Hunza, Deosai, and more. Solo, couple, family & group tours.</p>
+          <a href="packages.html" class="card-link">View Packages <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card hover-3d reveal delay-2">
+          <div class="service-icon">🏨</div>
+          <h3>Hotel Services</h3>
+          <p>Book luxury resorts and guest houses in Skardu — Shangrila, Serena Shigar Fort, Himmel & more.</p>
+          <a href="hotels.html" class="card-link">View Hotels <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card hover-3d reveal delay-3">
+          <div class="service-icon">🚗</div>
+          <h3>Car Rental</h3>
+          <p>Economy to luxury vehicles with or without fuel. Toyota Land Cruiser, Prado, Vitz & more.</p>
+          <a href="rent-a-car.html" class="card-link">View Cars <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card hover-3d reveal delay-4">
+          <div class="service-icon">✈️</div>
+          <h3>Air Ticketing</h3>
+          <p>PIA, Airblue & Air Sial tickets to Skardu and Gilgit. Best rates guaranteed.</p>
+          <a href="air-tickets.html" class="card-link">Book Tickets <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED DESTINATIONS ========== -->
+  <section class="section section-gray" id="destinations">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">Top Destinations</div>
+        <h2 class="section-title reveal delay-1">Explore <span>Paradise</span></h2>
+        <p class="section-subtitle reveal delay-2">Discover the most stunning places in Gilgit-Baltistan</p>
+      </div>
+
+      <!-- 3D Rotating Gallery -->
+      <div class="gallery-3d-wrapper reveal">
+        <div class="gallery-3d-scene">
+          <div class="gallery-3d-carousel">
+            <div class="gallery-3d-card" style="--i:0"><img src="images/j3.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:1"><img src="images/j4.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:2"><img src="images/j5.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:3"><img src="images/j6.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:4"><img src="images/j7.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:5"><img src="images/j8.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:6"><img src="images/j9.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:7"><img src="images/j10.jpeg" alt="Gilgit-Baltistan"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="destinations-grid">
+        <div class="destination-card reveal delay-1">
+          <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&h=800&fit=crop" alt="Skardu Valley" loading="lazy">
+          <div class="destination-tag">Most Popular</div>
+          <div class="destination-overlay">
+            <h3>Skardu Valley</h3>
+            <p>Gateway to K2, stunning lakes & ancient forts</p>
+          </div>
+        </div>
+
+        <div class="destination-card reveal delay-2">
+          <img src="https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?w=600&h=800&fit=crop" alt="Hunza Valley" loading="lazy">
+          <div class="destination-tag">Breathtaking</div>
+          <div class="destination-overlay">
+            <h3>Hunza Valley</h3>
+            <p>Rakaposhi views, cherry blossoms & rich culture</p>
+          </div>
+        </div>
+
+        <div class="destination-card reveal delay-3">
+          <img src="https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?w=600&h=800&fit=crop" alt="Deosai Plains" loading="lazy">
+          <div class="destination-tag">Adventure</div>
+          <div class="destination-overlay">
+            <h3>Deosai National Park</h3>
+            <p>World's 2nd highest plateau — wildlife & wildflowers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED PACKAGE ========== -->
+  <section class="section" id="featured-package">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">Featured Trip</div>
+        <h2 class="section-title reveal delay-1">5 Days <span>Skardu</span> Tour</h2>
+        <p class="section-subtitle reveal delay-2">Our most popular package — by air from Islamabad</p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Day 1 <span>— Arrival</span></h3>
+            <ul>
+              <li>Flight from Islamabad/Lahore/Karachi to Skardu</li>
+              <li>Check-in at hotel, rest & acclimatization</li>
+              <li>Evening walk by the river or bazaar visit</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Day 2 <span>— Skardu City Tour</span></h3>
+            <ul>
+              <li>Skardu Bazaar exploration</li>
+              <li>Upper Kachura Lake visit</li>
+              <li>Shangrila Resort</li>
+              <li>Bonfire night (optional)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Day 3 <span>— Shigar Valley</span></h3>
+            <ul>
+              <li>Shigar Fort (heritage site)</li>
+              <li>Blind Lake</li>
+              <li>Sarfaranga Cold Desert</li>
+              <li>Return to Skardu in the evening</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Day 4 <span>— Khaplu Valley</span></h3>
+            <ul>
+              <li>Drive to Khaplu (3-4 hrs)</li>
+              <li>Visit Khaplu Fort & Chaqchan Mosque</li>
+              <li>Hike along the Hushe River</li>
+              <li>Overnight in Khaplu or return to Skardu</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Day 5 <span>— Departure</span></h3>
+            <ul>
+              <li>Breakfast & checkout</li>
+              <li>Return journey via road or flight</li>
+              <li>Stops at viewpoints & riverside areas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-40 reveal">
+        <div class="includes-grid" style="max-width: 700px; margin: 0 auto 30px;">
+          <div class="include-item"><i class="fas fa-check-circle"></i> AC Transport (Grand Cabin)</div>
+          <div class="include-item"><i class="fas fa-check-circle"></i> Hotel Accommodation</div>
+          <div class="include-item"><i class="fas fa-check-circle"></i> Breakfast & Dinner</div>
+          <div class="include-item"><i class="fas fa-check-circle"></i> Guided Tours</div>
+          <div class="include-item"><i class="fas fa-check-circle"></i> Entry Tickets</div>
+          <div class="include-item"><i class="fas fa-check-circle"></i> Tour Guide</div>
+        </div>
+        <a href="packages.html" class="btn btn-primary ripple">
+          <i class="fas fa-eye"></i> View All Packages
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== URDU SECTION ========== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="morph-bg" style="top: -100px; right: -100px;"></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+        <div class="reveal-left">
+          <div class="section-badge">اردو میں</div>
+          <h2 class="section-title" style="color: var(--secondary); font-size: 2rem;">خوش آمدید</h2>
+          <div class="urdu-text" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-top: 20px;">
+            <p>اگر آپ پاکستان کے خوبصورت شمالی علاقوں جیسے ناران، کاغان، ہنزہ، سکردو، استور، خنجراب ٹاپ کا وزٹ کرنا چاہتے ہیں تو دیر کس بات کی؟</p>
+            <p style="margin-top: 15px;">ابھی ہمارے ساتھ رابطہ کریں اور مناسب ترین ریٹس میں اپنے اور اپنے پیاروں کے لیے ایک یادگار اور پُرسکون ٹور بک کروائیں۔</p>
+            <p style="margin-top: 15px;">فیملی، گروپ، اور کارپوریٹ ٹورز کے لیے اسپیشل پیکجز دستیاب ہیں۔</p>
+          </div>
+          <div style="margin-top: 30px;">
+            <a href="contact.html" class="btn btn-primary ripple">
+              <i class="fas fa-phone"></i> رابطہ کریں
+            </a>
+          </div>
+        </div>
+        <div class="reveal-right" style="text-align: center;">
+          <img src="shared%20image.jpg" alt="Western GB Travel & Tours team in Gilgit-Baltistan" style="border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); max-width: 100%; animation: float 4s ease-in-out infinite;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">Reviews</div>
+        <h2 class="section-title reveal delay-1">What Our <span>Guests Say</span></h2>
+        <p class="section-subtitle reveal delay-2">Real experiences from our valued travelers</p>
+      </div>
+
+      <div class="testimonials-slider">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Amazing experience with Western GB Travel! The Skardu trip was perfectly organized. The scenery was breathtaking and the team was incredibly helpful throughout."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AK</div>
+            <div class="testimonial-info">
+              <h4>Ahmed Khan</h4>
+              <p>Family Tour — Skardu</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Best travel company in GB! They arranged everything perfectly — from airport pickup to hotel stays. The Deosai trip was the highlight of our vacation."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SA</div>
+            <div class="testimonial-info">
+              <h4>Sara Ali</h4>
+              <p>Couple Tour — Hunza & Skardu</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"We booked a corporate tour for 20 people. Everything was handled professionally. Great vehicles, beautiful hotels, and a very cooperative team. Highly recommended!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div class="testimonial-info">
+              <h4>Muhammad Raza</h4>
+              <p>Corporate Tour — Gilgit-Baltistan</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The car rental service was excellent. Got a brand new Prado for our self-drive Skardu trip. Very clean and well-maintained. Will definitely book again!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">FZ</div>
+            <div class="testimonial-info">
+              <h4>Fatima Zahra</h4>
+              <p>Car Rental — Skardu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA SECTION ========== -->
+  <section class="cta-section">
+    <div class="particles-container" id="cta-particles"></div>
+    <div class="cta-content container">
+      <h2 class="text-3d reveal">Ready for Your <span style="color: var(--secondary);">Adventure?</span></h2>
+      <p class="reveal delay-1">Book your dream trip to the Northern Areas of Pakistan today. Special rates for families, groups & corporate tours.</p>
+      <div class="cta-buttons reveal delay-2">
+        <a href="contact.html" class="btn btn-primary ripple">
+          <i class="fas fa-paper-plane"></i> Book Now
+        </a>
+        <a href="https://wa.me/923409333238?text=Hi!%20I%20want%20to%20book%20a%20tour" target="_blank" class="btn btn-whatsapp ripple">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="tel:+923195706670" class="btn btn-outline ripple">
+          <i class="fas fa-phone"></i> Call Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3><img src="logo.jpeg" alt="Western GB Logo" style="width:30px;height:30px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;">Western GB Travel & Tours</h3>
+          <p>Your trusted travel partner for exploring the breathtaking Northern Areas of Pakistan. We offer tour packages, hotel bookings, car rentals, and air ticketing services.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/western_gb_travel" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/923409333238" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:westerngbt@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="rent-a-car.html">Rent a Car</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Destinations</h4>
+          <ul>
+            <li><a href="packages.html">Skardu</a></li>
+            <li><a href="packages.html">Hunza Valley</a></li>
+            <li><a href="packages.html">Deosai</a></li>
+            <li><a href="packages.html">Astore Valley</a></li>
+            <li><a href="packages.html">Khaplu Valley</a></li>
+            <li><a href="packages.html">Shigar</a></li>
+            <li><a href="packages.html">Kharmang</a></li>
+            <li><a href="packages.html">Khunjerab Pass</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <p><a href="tel:+923195706670">+92 319-5706670</a><br><a href="tel:+923555804423">+92 355-5804423</a></p>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <p><a href="https://wa.me/923409333238" target="_blank">+92 340-9333238</a></p>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <p><a href="mailto:westerngbt@gmail.com">westerngbt@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Western GB Travel & Tours. All Rights Reserved.</p>
+        <p>Gilgit-Baltistan, Pakistan 🇵🇰</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== WHATSAPP FLOAT ========== -->
+  <a href="https://wa.me/923409333238?text=Hi!%20I'm%20interested%20in%20your%20travel%20services" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ========== SCROLL TO TOP ========== -->
+  <a href="#" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>
