@@ -27,6 +27,17 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
   <style>
+    .hero-carousel-wrapper {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-carousel-wrapper .gallery-3d-card {
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      border: 2px solid rgba(240,192,64,0.2);
+    }
     .gallery-3d-wrapper {
       margin-bottom: 0;
       padding: 60px 0;
@@ -149,7 +160,23 @@
         </a>
       </div>
 
-      <div class="hero-stats reveal delay-4">
+      <!-- 3D Rotating Carousel in Hero -->
+      <div class="hero-carousel-wrapper reveal delay-4">
+        <div class="gallery-3d-scene">
+          <div class="gallery-3d-carousel">
+            <div class="gallery-3d-card" style="--i:0"><img src="images/j3.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:1"><img src="images/j4.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:2"><img src="images/j5.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:3"><img src="images/j6.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:4"><img src="images/j7.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:5"><img src="images/j8.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:6"><img src="images/j9.jpeg" alt="Gilgit-Baltistan"></div>
+            <div class="gallery-3d-card" style="--i:7"><img src="images/j10.jpeg" alt="Gilgit-Baltistan"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats reveal delay-5">
         <div class="hero-stat">
           <h3><span data-count="500" data-suffix="+">0</span></h3>
           <p>Happy Tourists</p>
@@ -245,7 +272,7 @@
 
       <div class="destinations-grid">
         <div class="destination-card reveal delay-1">
-          <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&h=800&fit=crop" alt="Skardu Valley" loading="lazy">
+          <img src="images/skardu.jfif" alt="Skardu Valley" loading="lazy">
           <div class="destination-tag">Most Popular</div>
           <div class="destination-overlay">
             <h3>Skardu Valley</h3>
@@ -254,7 +281,7 @@
         </div>
 
         <div class="destination-card reveal delay-2">
-          <img src="https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?w=600&h=800&fit=crop" alt="Hunza Valley" loading="lazy">
+          <img src="images/hunza.jfif" alt="Hunza Valley" loading="lazy">
           <div class="destination-tag">Breathtaking</div>
           <div class="destination-overlay">
             <h3>Hunza Valley</h3>
@@ -263,7 +290,7 @@
         </div>
 
         <div class="destination-card reveal delay-3">
-          <img src="https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?w=600&h=800&fit=crop" alt="Deosai Plains" loading="lazy">
+          <img src="images/Deosai-pakistan.webp" alt="Deosai Plains" loading="lazy">
           <div class="destination-tag">Adventure</div>
           <div class="destination-overlay">
             <h3>Deosai National Park</h3>

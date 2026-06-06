@@ -126,6 +126,7 @@
               <label for="f-service">Service Required *</label>
               <select id="f-service" name="service" required>
                 <option value="">Select service...</option>
+                <option value="Complete Trip Package">Complete Trip Package (Tour + Hotel + Car)</option>
                 <option value="Tour Package">Tour Package</option>
                 <option value="Hotel Booking">Hotel Booking</option>
                 <option value="Car Rental">Car Rental</option>
@@ -182,18 +183,21 @@
     </div>
   </section>
 
-  <!-- TOUR BOOKING FORM -->
+  <!-- COMPLETE TRIP BOOKING FORM -->
   <section class="section section-gray" id="tour-booking">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge reveal">Book a Trip</div>
-        <h2 class="section-title reveal delay-1">Tour Booking <span>Form</span></h2>
-        <p class="section-subtitle reveal delay-2">Fill in your details for a specific tour package booking</p>
+        <div class="section-badge reveal">Book Your Trip</div>
+        <h2 class="section-title reveal delay-1">Complete Trip <span>Booking</span></h2>
+        <p class="section-subtitle reveal delay-2">Book your tour, hotel & car rental — all in one order</p>
       </div>
 
-      <div class="form-container reveal" style="max-width: 700px; margin: 0 auto;">
-        <h3><i class="fas fa-compass text-accent"></i> Tour Package Booking</h3>
+      <div class="form-container reveal" style="max-width: 800px; margin: 0 auto;">
+        <h3><i class="fas fa-suitcase-rolling text-accent"></i> Complete Trip Booking</h3>
         <form id="tour-booking-form">
+
+          <!-- STEP 1: Personal Details -->
+          <div class="booking-section-header"><i class="fas fa-user"></i> Personal Details</div>
           <div class="form-row">
             <div class="form-group">
               <label for="t-name">Full Name *</label>
@@ -206,15 +210,43 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="t-adults">Number of Adults *</label>
-              <input type="number" id="t-adults" name="adults" min="1" required placeholder="e.g. 2">
+              <label for="t-email">Email</label>
+              <input type="email" id="t-email" name="email" placeholder="your@email.com">
             </div>
             <div class="form-group">
-              <label for="t-kids">Number of Kids</label>
-              <input type="number" id="t-kids" name="kids" min="0" value="0">
+              <label for="t-cnic">CNIC / Passport No.</label>
+              <input type="text" id="t-cnic" name="cnicPassport" placeholder="For booking verification">
             </div>
           </div>
           <div class="form-row">
+            <div class="form-group">
+              <label for="t-adults">Adults *</label>
+              <input type="number" id="t-adults" name="adults" min="1" required placeholder="e.g. 2">
+            </div>
+            <div class="form-group">
+              <label for="t-kids">Kids (under 12)</label>
+              <input type="number" id="t-kids" name="kids" min="0" value="0">
+            </div>
+          </div>
+
+          <!-- STEP 2: Tour Package -->
+          <div class="booking-section-header"><i class="fas fa-compass"></i> Tour Package</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-destination">Destination *</label>
+              <select id="t-destination" name="destination" required>
+                <option value="">Select destination...</option>
+                <option>Skardu</option>
+                <option>Hunza Valley</option>
+                <option>Khaplu Valley</option>
+                <option>Astore Valley</option>
+                <option>Shigar</option>
+                <option>Kharmang</option>
+                <option>Deosai</option>
+                <option>Khunjerab Pass</option>
+                <option>Multiple Destinations</option>
+              </select>
+            </div>
             <div class="form-group">
               <label for="t-package">Tour Package *</label>
               <select id="t-package" name="package" required>
@@ -228,6 +260,8 @@
                 <option>Custom Package</option>
               </select>
             </div>
+          </div>
+          <div class="form-row">
             <div class="form-group">
               <label for="t-type">Tour Type *</label>
               <select id="t-type" name="tourType" required>
@@ -239,14 +273,8 @@
                 <option>Corporate</option>
               </select>
             </div>
-          </div>
-          <div class="form-row">
             <div class="form-group">
-              <label for="t-depart">Departure Date *</label>
-              <input type="date" id="t-depart" name="departureDate" required>
-            </div>
-            <div class="form-group">
-              <label for="t-transport">Transport Preference</label>
+              <label for="t-transport">Transport To GB</label>
               <select id="t-transport" name="transport">
                 <option value="By Air">By Air (Flight)</option>
                 <option value="By Road">By Road (KKH)</option>
@@ -254,19 +282,198 @@
               </select>
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-depart">Departure Date *</label>
+              <input type="date" id="t-depart" name="departureDate" required>
+            </div>
+            <div class="form-group">
+              <label for="t-return">Return Date *</label>
+              <input type="date" id="t-return" name="returnDate" required>
+            </div>
+          </div>
+
+          <!-- ADD-ON SERVICES -->
+          <div class="booking-section-header"><i class="fas fa-plus-circle"></i> Add-On Services</div>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 16px;">Select additional services to include in your booking</p>
+
+          <div class="addon-toggles">
+            <!-- Hotel Add-on Toggle -->
+            <label class="addon-toggle" for="addon-hotel">
+              <input type="checkbox" id="addon-hotel" name="addHotel" value="yes">
+              <div class="addon-toggle-card">
+                <div class="addon-icon"><i class="fas fa-hotel"></i></div>
+                <div class="addon-info">
+                  <strong>Hotel Booking</strong>
+                  <span>Add hotel/resort reservation</span>
+                </div>
+                <div class="addon-check"><i class="fas fa-check-circle"></i></div>
+              </div>
+            </label>
+
+            <!-- Car Rental Add-on Toggle -->
+            <label class="addon-toggle" for="addon-car">
+              <input type="checkbox" id="addon-car" name="addCar" value="yes">
+              <div class="addon-toggle-card">
+                <div class="addon-icon"><i class="fas fa-car"></i></div>
+                <div class="addon-info">
+                  <strong>Car Rental</strong>
+                  <span>Add vehicle for local travel</span>
+                </div>
+                <div class="addon-check"><i class="fas fa-check-circle"></i></div>
+              </div>
+            </label>
+          </div>
+
+          <!-- HOTEL SECTION (Hidden by default) -->
+          <div class="addon-section" id="hotel-addon-section" style="display:none;">
+            <div class="booking-section-header" style="color: var(--secondary);"><i class="fas fa-hotel"></i> Hotel Details</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="t-hotel">Preferred Hotel</label>
+                <select id="t-hotel" name="preferredHotel">
+                  <option value="">Select a hotel...</option>
+                  <option>Shangrila Resort Skardu</option>
+                  <option>Serena Shigar Fort</option>
+                  <option>Himmel by Luxus Skardu</option>
+                  <option>Zimza Resort Skardu</option>
+                  <option>Cascade Resort Ghowari</option>
+                  <option>Maple Resort Skardu</option>
+                  <option>Rivaj Resort Shigar</option>
+                  <option>Kinara Resort</option>
+                  <option>Guman Resort</option>
+                  <option>Other / No Preference</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="t-rooms">Number of Rooms</label>
+                <input type="number" id="t-rooms" name="rooms" min="1" value="1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="t-roomtype">Room Type</label>
+                <select id="t-roomtype" name="roomType">
+                  <option value="">Select room type...</option>
+                  <option>Standard Room</option>
+                  <option>Deluxe Room</option>
+                  <option>Family Suite</option>
+                  <option>Luxury Suite</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="t-meal">Meal Plan</label>
+                <select id="t-meal" name="mealPlan">
+                  <option value="">Select meal plan...</option>
+                  <option>Room Only</option>
+                  <option>Bed & Breakfast</option>
+                  <option>Half Board (B+D)</option>
+                  <option>Full Board (B+L+D)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="t-hotel-notes">Hotel Special Requests</label>
+              <textarea id="t-hotel-notes" name="hotelNotes" placeholder="Mountain view, ground floor, extra bed, etc." rows="2"></textarea>
+            </div>
+          </div>
+
+          <!-- CAR RENTAL SECTION (Hidden by default) -->
+          <div class="addon-section" id="car-addon-section" style="display:none;">
+            <div class="booking-section-header" style="color: var(--secondary);"><i class="fas fa-car"></i> Car Rental Details</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="t-vehicle">Vehicle Type</label>
+                <select id="t-vehicle" name="vehicleType">
+                  <option value="">Select vehicle...</option>
+                  <optgroup label="Economy">
+                    <option>Toyota Vitz</option>
+                    <option>Saloon Car (Petrol)</option>
+                    <option>Saloon Car (Diesel)</option>
+                  </optgroup>
+                  <optgroup label="Standard">
+                    <option>Toyota Premio</option>
+                    <option>OD X and G</option>
+                    <option>Jeep 4x4</option>
+                  </optgroup>
+                  <optgroup label="Luxury / SUV">
+                    <option>Honda BRV</option>
+                    <option>Prado TZ</option>
+                    <option>Toyota Land Cruiser V8</option>
+                  </optgroup>
+                  <optgroup label="Vans & Transport">
+                    <option>Toyota Five Door</option>
+                    <option>GLi (Up Model)</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="t-vcount">Number of Vehicles</label>
+                <input type="number" id="t-vcount" name="vehicleCount" min="1" value="1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="t-fuel">Fuel Option</label>
+                <select id="t-fuel" name="fuelOption">
+                  <option value="With Fuel">With Fuel</option>
+                  <option value="Without Fuel">Without Fuel</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="t-driver">Driver</label>
+                <select id="t-driver" name="driverOption">
+                  <option value="With Driver">With Driver</option>
+                  <option value="Self Drive">Self Drive</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="t-car-notes">Car Rental Notes</label>
+              <textarea id="t-car-notes" name="carNotes" placeholder="Pick-up location, specific routes, etc." rows="2"></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 4: Final Notes -->
+          <div class="booking-section-header"><i class="fas fa-clipboard-list"></i> Additional Info</div>
+          <div class="form-group">
+            <label for="t-budget">Budget Range (PKR)</label>
+            <select id="t-budget" name="budgetRange">
+              <option value="">Select budget range...</option>
+              <option>Under 50,000</option>
+              <option>50,000 — 100,000</option>
+              <option>100,000 — 200,000</option>
+              <option>200,000 — 500,000</option>
+              <option>500,000+</option>
+              <option>Flexible / Discuss</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="t-notes">Special Requests / Notes</label>
-            <textarea id="t-notes" name="notes" placeholder="Budget preferences, dietary needs, special activities..."></textarea>
+            <textarea id="t-notes" name="notes" placeholder="Budget preferences, dietary needs, accessibility requirements, activities you'd like..."></textarea>
           </div>
+
+          <!-- ORDER SUMMARY -->
+          <div class="order-summary" id="order-summary">
+            <h4><i class="fas fa-receipt"></i> Booking Summary</h4>
+            <div class="summary-items">
+              <div class="summary-item"><i class="fas fa-compass text-accent"></i> <span id="summary-package">Tour Package</span></div>
+              <div class="summary-item summary-hotel" style="display:none;"><i class="fas fa-hotel text-accent"></i> <span id="summary-hotel">Hotel Booking</span></div>
+              <div class="summary-item summary-car" style="display:none;"><i class="fas fa-car text-accent"></i> <span id="summary-car">Car Rental</span></div>
+              <div class="summary-item"><i class="fas fa-users text-accent"></i> <span id="summary-travelers">Travelers</span></div>
+              <div class="summary-item"><i class="fas fa-calendar text-accent"></i> <span id="summary-dates">Travel Dates</span></div>
+            </div>
+          </div>
+
           <button type="submit" class="btn btn-primary ripple" style="width:100%; justify-content:center;">
-            <i class="fas fa-paper-plane"></i> Submit Booking
+            <i class="fas fa-paper-plane"></i> Submit Complete Booking
           </button>
           <p class="form-note"><i class="fas fa-lock"></i> 50% advance required to confirm. We'll send payment details after confirmation.</p>
         </form>
         <div class="form-success">
           <i class="fas fa-check-circle"></i>
           <h3>Booking Submitted!</h3>
-          <p>Our team will review your request and contact you within a few hours. Thank you!</p>
+          <p>Your complete trip booking has been received! Our team will review all services and contact you within a few hours with pricing and availability.</p>
         </div>
       </div>
     </div>
@@ -302,5 +509,107 @@
   <a href="#" class="scroll-top"><i class="fas fa-chevron-up"></i></a>
   <script src="js/main.js"></script>
   <script src="js/form.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add-on toggle: Hotel
+    const hotelCheckbox = document.getElementById('addon-hotel');
+    const hotelSection = document.getElementById('hotel-addon-section');
+    const summaryHotel = document.querySelector('.summary-hotel');
+
+    // Add-on toggle: Car
+    const carCheckbox = document.getElementById('addon-car');
+    const carSection = document.getElementById('car-addon-section');
+    const summaryCar = document.querySelector('.summary-car');
+
+    if (hotelCheckbox) {
+      hotelCheckbox.addEventListener('change', () => {
+        hotelSection.style.display = hotelCheckbox.checked ? 'block' : 'none';
+        if (summaryHotel) summaryHotel.style.display = hotelCheckbox.checked ? 'flex' : 'none';
+        updateSummary();
+      });
+    }
+    if (carCheckbox) {
+      carCheckbox.addEventListener('change', () => {
+        carSection.style.display = carCheckbox.checked ? 'block' : 'none';
+        if (summaryCar) summaryCar.style.display = carCheckbox.checked ? 'flex' : 'none';
+        updateSummary();
+      });
+    }
+
+    // Live order summary
+    const form = document.getElementById('tour-booking-form');
+    if (form) {
+      const fields = form.querySelectorAll('input, select, textarea');
+      fields.forEach(f => f.addEventListener('change', updateSummary));
+      fields.forEach(f => f.addEventListener('input', updateSummary));
+    }
+
+    function updateSummary() {
+      const pkg = document.getElementById('t-package');
+      const dest = document.getElementById('t-destination');
+      const adults = document.getElementById('t-adults');
+      const kids = document.getElementById('t-kids');
+      const depart = document.getElementById('t-depart');
+      const returnDate = document.getElementById('t-return');
+      const hotel = document.getElementById('t-hotel');
+      const vehicle = document.getElementById('t-vehicle');
+
+      // Package summary
+      const summaryPkg = document.getElementById('summary-package');
+      if (summaryPkg) {
+        const pkgVal = pkg && pkg.value ? pkg.value : 'Not selected';
+        const destVal = dest && dest.value ? dest.value : '';
+        summaryPkg.textContent = destVal ? pkgVal + ' — ' + destVal : pkgVal;
+      }
+
+      // Travelers
+      const summaryTravelers = document.getElementById('summary-travelers');
+      if (summaryTravelers) {
+        const a = adults && adults.value ? parseInt(adults.value) || 0 : 0;
+        const k = kids && kids.value ? parseInt(kids.value) || 0 : 0;
+        summaryTravelers.textContent = a + ' Adult' + (a !== 1 ? 's' : '') + (k > 0 ? ', ' + k + ' Kid' + (k !== 1 ? 's' : '') : '');
+      }
+
+      // Dates
+      const summaryDates = document.getElementById('summary-dates');
+      if (summaryDates) {
+        const d = depart && depart.value ? new Date(depart.value).toLocaleDateString('en-PK', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+        const r = returnDate && returnDate.value ? new Date(returnDate.value).toLocaleDateString('en-PK', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+        summaryDates.textContent = d + ' → ' + r;
+      }
+
+      // Hotel
+      const summaryH = document.getElementById('summary-hotel');
+      if (summaryH && hotel) {
+        summaryH.textContent = hotel.value || 'Hotel — Not selected';
+      }
+
+      // Car
+      const summaryC = document.getElementById('summary-car');
+      if (summaryC && vehicle) {
+        summaryC.textContent = vehicle.value || 'Vehicle — Not selected';
+      }
+    }
+
+    // Date validation: return date must be after departure
+    const departInput = document.getElementById('t-depart');
+    const returnInput = document.getElementById('t-return');
+    if (departInput && returnInput) {
+      // Set min date to today
+      const today = new Date().toISOString().split('T')[0];
+      departInput.min = today;
+      returnInput.min = today;
+
+      departInput.addEventListener('change', () => {
+        if (departInput.value) {
+          returnInput.min = departInput.value;
+          if (returnInput.value && returnInput.value < departInput.value) {
+            returnInput.value = '';
+          }
+        }
+      });
+    }
+  });
+  </script>
 </body>
 </html>

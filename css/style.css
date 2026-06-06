@@ -1247,6 +1247,143 @@ input, textarea, select {
   text-align: center;
 }
 
+/* Booking Section Headers */
+.booking-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 12px 0 8px;
+  margin: 20px 0 12px;
+  border-bottom: 2px solid rgba(240, 192, 64, 0.3);
+  font-family: var(--font-heading);
+}
+.booking-section-header i {
+  color: var(--secondary);
+  font-size: 1rem;
+}
+
+/* Add-on Service Toggles */
+.addon-toggles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.addon-toggle {
+  cursor: pointer;
+}
+.addon-toggle input[type="checkbox"] {
+  display: none;
+}
+.addon-toggle-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+  transition: all 0.3s ease;
+}
+.addon-toggle-card:hover {
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(240, 192, 64, 0.15);
+}
+.addon-toggle input:checked + .addon-toggle-card {
+  border-color: var(--secondary);
+  background: linear-gradient(135deg, rgba(240, 192, 64, 0.08), rgba(26, 54, 93, 0.08));
+  box-shadow: 0 4px 20px rgba(240, 192, 64, 0.2);
+}
+.addon-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.addon-info {
+  flex: 1;
+}
+.addon-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.addon-info span {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+.addon-check {
+  color: var(--border);
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+.addon-toggle input:checked + .addon-toggle-card .addon-check {
+  color: var(--secondary);
+}
+
+/* Add-on Section Slide */
+.addon-section {
+  padding: 20px;
+  margin: 16px 0;
+  background: linear-gradient(135deg, rgba(26, 54, 93, 0.03), rgba(240, 192, 64, 0.03));
+  border: 1px solid rgba(240, 192, 64, 0.2);
+  border-radius: 12px;
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; transform: translateY(-10px); }
+  to { opacity: 1; max-height: 600px; transform: translateY(0); }
+}
+
+/* Order Summary */
+.order-summary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  color: white;
+}
+.order-summary h4 {
+  font-size: 1rem;
+  margin-bottom: 14px;
+  font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.summary-item:last-child {
+  border-bottom: none;
+}
+.summary-item .text-accent {
+  color: var(--secondary) !important;
+  width: 18px;
+  text-align: center;
+}
+
 .form-success {
   display: none;
   text-align: center;
